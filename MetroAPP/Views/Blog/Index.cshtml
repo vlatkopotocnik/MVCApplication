@@ -1,0 +1,77 @@
+﻿@using System.Globalization
+@model MetroAPP.Models.Blog.BlogItemAndKorisnikAndComments
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<section id="blog" class="container">
+    <div class="text-primary" style="padding-left: 100px;">
+        <h2 style="padding-top: 20px;">Blog</h2>
+        <p class="lead" style="padding-bottom: 20px;">Latest news from Audio - Tehghnica</p>
+    </div>
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-8">
+                @foreach (var item in @Model.ListBlogItemAndKorisnik)
+                {
+                    <div class="blog-item">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                    <span id="publish_date">@item.Korisnik.KorisnikRegistracija.Date.Day.@item.Korisnik.KorisnikRegistracija.Date.Month.@item.Korisnik.KorisnikRegistracija.Date.Year</span>
+                                    <span>Author:<br/><a href="#">@item.Korisnik.KorisnikIme @item.Korisnik.KorisnikPrezime</a></span>
+                                    <span>Likes: <a href="#">@item.BlogItem.BlogLikes</a></span>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-10 blog-content">
+                                <h2 class="text-info">@item.BlogItem.BlogNaslovnica</h2>
+                                <a href="#"><img class="img-responsive img-blog" src="~/Images/Blog/@item.BlogItem.BlogImageUrl" width="100%" alt="" /></a>
+                                <h3 style="padding-bottom: 20px;">Posted on @item.BlogItem.BlogItemDate</h3>
+                                <h3>@item.BlogItem.BlogTextSample</h3>
+                                <div style="background-color: #000000; width: 102px; border-radius: 10px;"><p style="padding:10px;">@Html.ActionLink("READ MORE", "Index", "BlogItemDetails", new { blogId = @item.BlogItem.BlogId}, null) </p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.blog-item-->
+                }
+                
+            </div><!--/.col-md-8-->
+            <aside class="col-md-4">
+                <div class="widget search">
+                    <form role="form">
+                        <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                    </form>
+                </div><!--/.search-->
+
+                <div class="widget categories">
+                    <h3>Recent Comments</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @foreach (var item in @Model.ListBlogTop3Comment)
+                            {
+                                <div class="single_comments">
+                                    <span class="text-primary">By: @item.Korisnik.KorisnikIme @item.Korisnik.KorisnikPrezime </span><span style="padding-left: 30px;">  @item.BlogComment.CommentDate</span>                                   
+                                    <p>@item.BlogComment.CommentText</p>
+                                    <div class="entry-meta small muted">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div><!--/.recent comments-->
+
+            </aside>
+        </div><!--/.row-->
+    </div>
+    <div class="collapse navbar-collapse navbar-inverse">
+        <p style="float:left; color: #FFFFFF">Page: </p>
+        <ul class="nav navbar-nav">
+            @foreach (var item in @Model.ListPaging)
+            {
+                <li>@Html.ActionLink(@item.ToString(CultureInfo.InvariantCulture), "Index", "Blog", new {page = @item}, null) </li>
+            }
+        </ul>
+    </div> <!--/.pagination-->
+</section><!--/#blog-->

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-primary" style="padding-left: 100px;">
+    <h2 style="padding-top: 20px;">Registration</h2>
+    <section>
+        <div style="width: 40%;">
+            @using (Html.BeginForm("Registred", "LogInOut", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    <div>
+                        <label>Name* </label>
+                        @Html.TextBox("ime", "", new { @class = "form-control", style = "border-color: #000000" })
+                    </div>
+                    <div>
+                        <label>Surname* </label>
+                        @Html.TextBox("prezime", "", new { @class = "form-control", style = "border-color: #000000" })
+                    </div>
+                    <div>
+                        <label>Username* </label>
+                        @Html.TextBox("username", "", new { @class = "form-control", style = "border-color: #000000" })
+                    </div>
+                    <div>
+                        <label>Password*</label>
+                        @Html.Password("password", "", new { @class = "form-control", style = "border-color: #000000" })
+                    </div>
+                    <div>
+                        <label>Picture</label>
+                        <input type="file" id="File" name="File" />
+                    </div>
+                    <div style="padding-bottom: 50px;">
+                        <button type="submit" name="submit" class="btn btn-primary btn-lg" value="Upload">Register</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>

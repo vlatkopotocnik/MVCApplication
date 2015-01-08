@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\inetpub\wwwroot\MVCApplication</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/MainDatabase.mdf">
+      <publishTime>12/27/2014 18:00:17</publishTime>
+    </File>
+    <File Include="App_Data/MainDatabase_log.ldf">
+      <publishTime>12/27/2014 18:00:17</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>12/24/2014 22:16:49</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>12/24/2014 22:16:49</publishTime>
+    </File>
+    <File Include="bin/MetroAPP.dll">
+      <publishTime>12/27/2014 18:01:00</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>12/20/2014 13:58:35</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>12/20/2014 13:58:38</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/20/2014 13:58:34</publishTime>
+    </File>
+    <File Include="bin/SimpleCrypto.dll">
+      <publishTime>12/24/2014 22:10:46</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.dll">
+      <publishTime>07/10/2012 12:07:38</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.WebRequest.dll">
+      <publishTime>07/10/2012 12:07:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>12/20/2014 13:58:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>12/20/2014 13:58:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>12/20/2014 13:58:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>12/20/2014 13:58:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>12/20/2014 13:58:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>12/20/2014 13:58:36</publishTime>
+    </File>
+    <File Include="Content/animate.min.css">
+      <publishTime>06/11/2014 22:19:06</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>12/20/2014 18:32:25</publishTime>
+    </File>
+    <File Include="Content/font-awesome.css">
+      <publishTime>06/03/2014 22:08:42</publishTime>
+    </File>
+    <File Include="Content/font-awesome.min.css">
+      <publishTime>06/03/2014 22:08:42</publishTime>
+    </File>
+    <File Include="Content/main.css">
+      <publishTime>12/27/2014 11:54:06</publishTime>
+    </File>
+    <File Include="Content/prettyPhoto.css">
+      <publishTime>06/03/2014 22:08:42</publishTime>
+    </File>
+    <File Include="Content/responsive.css">
+      <publishTime>06/19/2014 23:09:30</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/20/2014 13:58:22</publishTime>
+    </File>
+    <File Include="Images/Blog/autograde_effects.jpg">
+      <publishTime>12/23/2014 00:04:36</publishTime>
+    </File>
+    <File Include="Images/Blog/fcpxmm.jpg">
+      <publishTime>12/22/2014 21:31:58</publishTime>
+    </File>
+    <File Include="Images/Blog/nikon24_120vrii.jpg">
+      <publishTime>12/22/2014 21:35:54</publishTime>
+    </File>
+    <File Include="Images/Blog/photo-mics.jpg">
+      <publishTime>12/22/2014 21:25:54</publishTime>
+    </File>
+    <File Include="Images/Blog/roundups-865x505.jpg">
+      <publishTime>12/22/2014 21:42:37</publishTime>
+    </File>
+    <File Include="Images/Blog/video-camera-pro-2.jpg">
+      <publishTime>12/22/2014 21:39:25</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/334-144_HR_0.jpg">
+      <publishTime>12/21/2014 22:39:46</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/8035B022AA.jpg">
+      <publishTime>12/21/2014 22:38:49</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/GoPro_HD_HERO_2.jpg">
+      <publishTime>12/21/2014 22:39:02</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/Indiecam indieGS2K.jpg">
+      <publishTime>12/21/2014 22:39:56</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/nikon-coolpix-s6800-compact-camera-zwart.jpg">
+      <publishTime>12/21/2014 22:39:23</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/Pentax-K-30-Black-DSLR-Camera-with-DA-18-55mm-f3.5-5.6-AL-WR-Zoom-Lens-L16049322.jpg">
+      <publishTime>12/21/2014 22:39:15</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/sigma-dp2-30mm-f-2-8-quattro-compact-camera.jpg">
+      <publishTime>12/21/2014 22:39:34</publishTime>
+    </File>
+    <File Include="Images/Gallery/Camera/SNC-CH110S.jpg">
+      <publishTime>12/21/2014 22:40:12</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/61-0JmnZHvL._SL1400_.jpg">
+      <publishTime>12/21/2014 22:25:59</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/61Zjt2vmovL._SL1400_.jpg">
+      <publishTime>12/21/2014 22:25:50</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/ArticleSharedImage-21667.jpg">
+      <publishTime>12/21/2014 22:26:17</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/cassette-athletic-white-snake-s5csdy-221-rev-1.jpg">
+      <publishTime>12/21/2014 22:26:29</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/groov-e-streetz-stereo-headphones-violet-with-volume-control-gv-897-vt-[2]-1155-p.jpg">
+      <publishTime>12/21/2014 22:18:07</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/hesh_2-nba-lakers-snake.jpg">
+      <publishTime>12/21/2014 22:26:08</publishTime>
+    </File>
+    <File Include="Images/Gallery/Headphone/skullcandy-headphones.jpg">
+      <publishTime>12/21/2014 22:18:37</publishTime>
+    </File>
+    <File Include="Images/Gallery/LcdTv/LD0001032533_2.jpg">
+      <publishTime>12/21/2014 22:52:47</publishTime>
+    </File>
+    <File Include="Images/Gallery/LcdTv/philips-tv-65pus9109-12-001.o.jpg">
+      <publishTime>12/21/2014 22:53:04</publishTime>
+    </File>
+    <File Include="Images/Gallery/LcdTv/samsung-hdtv-lcd.jpg">
+      <publishTime>12/21/2014 22:52:13</publishTime>
+    </File>
+    <File Include="Images/Gallery/LcdTv/T1ZI9CFOFcXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>12/21/2014 22:52:25</publishTime>
+    </File>
+    <File Include="Images/Gallery/magnifying-glass.png">
+      <publishTime>12/27/2014 11:50:55</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/%24_57.JPG">
+      <publishTime>12/21/2014 22:45:54</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/242-862_HR_0.jpg">
+      <publishTime>12/21/2014 22:46:27</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/248-641_HR_0.jpg">
+      <publishTime>12/21/2014 22:45:37</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/294-572_ALT_0.jpg">
+      <publishTime>12/21/2014 22:47:51</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/303-502_HR_0.jpg">
+      <publishTime>12/21/2014 22:46:47</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/310-400_HR_0.jpg">
+      <publishTime>12/21/2014 22:46:12</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/71GeH4zmeTL._SL1400_.jpg">
+      <publishTime>12/21/2014 22:47:40</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/atrium4white.jpg">
+      <publishTime>12/21/2014 22:47:02</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/mod4_speakers.jpg">
+      <publishTime>12/21/2014 22:47:10</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/sp1.JPG">
+      <publishTime>12/21/2014 22:46:04</publishTime>
+    </File>
+    <File Include="Images/Gallery/Speaker/ThickBox_1050005.jpg">
+      <publishTime>12/21/2014 22:46:18</publishTime>
+    </File>
+    <File Include="Images/Korisnik/3395_NpAdvHover.jpg">
+      <publishTime>12/23/2014 12:08:17</publishTime>
+    </File>
+    <File Include="Images/Korisnik/49b73c04337988226ea32c9276db8f69.jpg">
+      <publishTime>12/23/2014 12:11:40</publishTime>
+    </File>
+    <File Include="Images/Korisnik/download.jpg">
+      <publishTime>12/23/2014 12:08:20</publishTime>
+    </File>
+    <File Include="Images/Korisnik/hugh laurie.jpg">
+      <publishTime>12/23/2014 12:11:09</publishTime>
+    </File>
+    <File Include="Images/Korisnik/images.jpg">
+      <publishTime>12/23/2014 12:10:24</publishTime>
+    </File>
+    <File Include="Images/Korisnik/People-and-Faces-5.jpg">
+      <publishTime>12/23/2014 12:08:12</publishTime>
+    </File>
+    <File Include="Images/Korisnik/women-people-faces-_4209-43.jpg">
+      <publishTime>12/23/2014 12:08:33</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Header/favicon.ico">
+      <publishTime>06/03/2014 22:08:44</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/0265208c2.png">
+      <publishTime>12/21/2014 01:04:06</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/31w3SGpAaNL.png">
+      <publishTime>12/21/2014 01:01:53</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/324423423.png">
+      <publishTime>12/21/2014 01:05:33</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/Maxell.png">
+      <publishTime>12/21/2014 01:07:31</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/motorolas10.png">
+      <publishTime>12/21/2014 01:08:59</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/Seated_wShadow.png">
+      <publishTime>12/21/2014 01:11:35</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/sony.png">
+      <publishTime>12/21/2014 01:12:46</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Headphones/SY300.png">
+      <publishTime>12/21/2014 01:14:03</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Slider/imgSld1.jpg">
+      <publishTime>12/26/2014 18:15:01</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Slider/imgSld2.jpg">
+      <publishTime>12/22/2014 11:54:29</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Slider/imgSld3.jpg">
+      <publishTime>12/22/2014 12:00:49</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Slider/left.png">
+      <publishTime>12/21/2014 00:19:57</publishTime>
+    </File>
+    <File Include="Images/Naslovnica/Slider/right.png">
+      <publishTime>12/21/2014 00:21:10</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/334-144_HR_0.jpg">
+      <publishTime>12/21/2014 22:39:46</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/8035B022AA.jpg">
+      <publishTime>12/21/2014 22:38:49</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/GoPro_HD_HERO_2.jpg">
+      <publishTime>12/21/2014 22:39:02</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/Indiecam indieGS2K.jpg">
+      <publishTime>12/21/2014 22:39:56</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/nikon-coolpix-s6800-compact-camera-zwart.jpg">
+      <publishTime>12/21/2014 22:39:23</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/Pentax-K-30-Black-DSLR-Camera-with-DA-18-55mm-f3.5-5.6-AL-WR-Zoom-Lens-L16049322.jpg">
+      <publishTime>12/21/2014 22:39:15</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/sigma-dp2-30mm-f-2-8-quattro-compact-camera.jpg">
+      <publishTime>12/21/2014 22:39:34</publishTime>
+    </File>
+    <File Include="Images/Products/Camera/SNC-CH110S.jpg">
+      <publishTime>12/21/2014 22:40:12</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/61-0JmnZHvL._SL1400_.jpg">
+      <publishTime>12/21/2014 22:25:59</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/61Zjt2vmovL._SL1400_.jpg">
+      <publishTime>12/21/2014 22:25:50</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/ArticleSharedImage-21667.jpg">
+      <publishTime>12/21/2014 22:26:17</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/cassette-athletic-white-snake-s5csdy-221-rev-1.jpg">
+      <publishTime>12/21/2014 22:26:29</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/groov-e-streetz-stereo-headphones-violet-with-volume-control-gv-897-vt-[2]-1155-p.jpg">
+      <publishTime>12/21/2014 22:18:07</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/hesh_2-nba-lakers-snake.jpg">
+      <publishTime>12/21/2014 22:26:08</publishTime>
+    </File>
+    <File Include="Images/Products/Headphone/skullcandy-headphones.jpg">
+      <publishTime>12/21/2014 22:18:37</publishTime>
+    </File>
+    <File Include="Images/Products/LcdTv/LD0001032533_2.jpg">
+      <publishTime>12/21/2014 22:52:47</publishTime>
+    </File>
+    <File Include="Images/Products/LcdTv/philips-tv-65pus9109-12-001.o.jpg">
+      <publishTime>12/21/2014 22:53:04</publishTime>
+    </File>
+    <File Include="Images/Products/LcdTv/samsung-hdtv-lcd.jpg">
+      <publishTime>12/21/2014 22:52:13</publishTime>
+    </File>
+    <File Include="Images/Products/LcdTv/T1ZI9CFOFcXXXXXXXX_!!0-item_pic.jpg">
+      <publishTime>12/21/2014 22:52:25</publishTime>
+    </File>
+    <File Include="Images/Products/magnifying-glass.png">
+      <publishTime>12/26/2014 12:40:52</publishTime>
+    </File>
+    <File Include="Images/Products/shopping_cart_racing.png">
+      <publishTime>12/27/2014 13:46:35</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/%24_57.JPG">
+      <publishTime>12/21/2014 22:45:54</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/242-862_HR_0.jpg">
+      <publishTime>12/21/2014 22:46:27</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/248-641_HR_0.jpg">
+      <publishTime>12/21/2014 22:45:37</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/294-572_ALT_0.jpg">
+      <publishTime>12/21/2014 22:47:51</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/303-502_HR_0.jpg">
+      <publishTime>12/21/2014 22:46:47</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/310-400_HR_0.jpg">
+      <publishTime>12/21/2014 22:46:12</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/71GeH4zmeTL._SL1400_.jpg">
+      <publishTime>12/21/2014 22:47:40</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/atrium4white.jpg">
+      <publishTime>12/21/2014 22:47:02</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/mod4_speakers.jpg">
+      <publishTime>12/21/2014 22:47:10</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/sp1.JPG">
+      <publishTime>12/21/2014 22:46:04</publishTime>
+    </File>
+    <File Include="Images/Products/Speaker/ThickBox_1050005.jpg">
+      <publishTime>12/21/2014 22:46:18</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/24/2014 22:16:52</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>06/03/2014 22:08:46</publishTime>
+    </File>
+    <File Include="Scripts/html5shiv.js">
+      <publishTime>06/03/2014 22:08:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.isotope.min.js">
+      <publishTime>06/03/2014 22:08:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery.js">
+      <publishTime>06/03/2014 22:08:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery.prettyPhoto.js">
+      <publishTime>06/03/2014 22:08:48</publishTime>
+    </File>
+    <File Include="Scripts/main.js">
+      <publishTime>06/24/2014 23:24:20</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>06/03/2014 22:08:48</publishTime>
+    </File>
+    <File Include="Scripts/wow.min.js">
+      <publishTime>05/09/2014 15:01:28</publishTime>
+    </File>
+    <File Include="Views/Blog/Index.cshtml">
+      <publishTime>12/24/2014 10:09:47</publishTime>
+    </File>
+    <File Include="Views/BlogItemDetails/Index.cshtml">
+      <publishTime>12/26/2014 11:03:24</publishTime>
+    </File>
+    <File Include="Views/BlogItemDetails/messagePost.cshtml">
+      <publishTime>12/23/2014 19:02:43</publishTime>
+    </File>
+    <File Include="Views/Galerija/Index.cshtml">
+      <publishTime>12/21/2014 23:08:28</publishTime>
+    </File>
+    <File Include="Views/Kontakt/Index.cshtml">
+      <publishTime>12/26/2014 11:08:11</publishTime>
+    </File>
+    <File Include="Views/Kontakt/SendMessage.cshtml">
+      <publishTime>12/24/2014 18:34:30</publishTime>
+    </File>
+    <File Include="Views/LogInOut/Index.cshtml">
+      <publishTime>12/26/2014 11:10:34</publishTime>
+    </File>
+    <File Include="Views/LogInOut/Register.cshtml">
+      <publishTime>12/26/2014 11:10:34</publishTime>
+    </File>
+    <File Include="Views/LogInOut/Registred.cshtml">
+      <publishTime>12/25/2014 21:52:42</publishTime>
+    </File>
+    <File Include="Views/Naslovnica/Index.cshtml">
+      <publishTime>12/26/2014 18:15:38</publishTime>
+    </File>
+    <File Include="Views/Naslovnica/SendMail.cshtml">
+      <publishTime>12/24/2014 18:37:03</publishTime>
+    </File>
+    <File Include="Views/Proizvodi/CartDetails.cshtml">
+      <publishTime>12/27/2014 15:12:18</publishTime>
+    </File>
+    <File Include="Views/Proizvodi/Index.cshtml">
+      <publishTime>12/27/2014 14:55:08</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutPage1.cshtml">
+      <publishTime>12/27/2014 16:52:20</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>12/20/2014 13:58:22</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/27/2014 18:01:01</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Registred";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 class="text-center" style="padding-top:200px;padding-bottom: 50px;">Your have registered successfully. Thanks.</h2>
+@using (Html.BeginForm("Index", "Naslovnica", FormMethod.Post))
+{
+    <div style="padding-bottom: 300px;" class="center">
+        <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Continue</button>
+    </div>
+}

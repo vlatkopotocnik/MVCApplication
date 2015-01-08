@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MainDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BlogComment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommentIdBlog" Type="Int32" Nullable="false" />
+    <Property Name="CommentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CommentDate" Type="DateTime" Precision="3" />
+    <Property Name="KorisnikId" Type="Int32" />
+    <NavigationProperty Name="BlogItem" Relationship="Self.FK_BlogItem_ToBlogComment" FromRole="BlogComment" ToRole="BlogItem" />
+  </EntityType>
+  <EntityType Name="BlogItem">
+    <Key>
+      <PropertyRef Name="BlogId" />
+    </Key>
+    <Property Name="BlogId" Type="Int32" Nullable="false" />
+    <Property Name="BlogImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogNaslovnica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogTextSample" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogActionLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BlogLikes" Type="Int32" />
+    <Property Name="CommentId" Type="Int32" />
+    <Property Name="KorisnikId" Type="Int32" />
+    <Property Name="BlogPage" Type="Int32" />
+    <Property Name="BlogItemDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="BlogComment" Relationship="Self.FK_BlogItem_ToBlogComment" FromRole="BlogItem" ToRole="BlogComment" />
+  </EntityType>
+  <EntityType Name="GalleryAndSliderAndNaslovnica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PictureSrc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PicturePage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NaslovnicaItemNaslov" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NaslovnicaItemText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NaslovnicaItemActionLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SliderListItemActive" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ItemHTMLplace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Korisnik">
+    <Key>
+      <PropertyRef Name="KorisnikId" />
+    </Key>
+    <Property Name="KorisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KorisnikIme" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KorisnikPrezime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KorisnikRegistracija" Type="DateTime" Precision="3" />
+    <Property Name="KorisnikSlika" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KorisnikPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KorisnikUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KorisnikPasswordSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_BlogItem_ToBlogComment">
+    <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="0..1" />
+    <End Role="BlogItem" Type="Self.BlogItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogComment">
+        <PropertyRef Name="CommentId" />
+      </Principal>
+      <Dependent Role="BlogItem">
+        <PropertyRef Name="CommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MainDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BlogComment" EntityType="Self.BlogComment" />
+    <EntitySet Name="BlogItem" EntityType="Self.BlogItem" />
+    <EntitySet Name="GalleryAndSliderAndNaslovnica" EntityType="Self.GalleryAndSliderAndNaslovnica" />
+    <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+    <AssociationSet Name="FK_BlogItem_ToBlogComment" Association="Self.FK_BlogItem_ToBlogComment">
+      <End Role="BlogComment" EntitySet="BlogComment" />
+      <End Role="BlogItem" EntitySet="BlogItem" />
+    </AssociationSet>
+    <FunctionImport Name="INSERTBlogComment">
+      <Parameter Name="CommentIdBlog" Mode="In" Type="Int32" />
+      <Parameter Name="CommentText" Mode="In" Type="String" />
+      <Parameter Name="CommentDate" Mode="In" Type="DateTime" />
+      <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SEARCHKorisnik" ReturnType="Collection(MainDatabaseModel.SEARCHKorisnik_Result)">
+      <Parameter Name="KorisnikUsername" Mode="In" Type="String" />
+      <Parameter Name="KorisnikPassword" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SELECTAllBlogComment" ReturnType="Collection(MainDatabaseModel.SELECTAllBlogComment_Result)">
+      <Parameter Name="CommentIdBlog" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SELECTAllBlogDetails" ReturnType="Collection(MainDatabaseModel.SELECTAllBlogDetails_Result)">
+      <Parameter Name="BlogId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SELECTAllBlogItem" ReturnType="Collection(MainDatabaseModel.SELECTAllBlogItem_Result)">
+      <Parameter Name="BlockPage" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SELECTAllBlogKorisnik" ReturnType="Collection(MainDatabaseModel.SELECTAllBlogKorisnik_Result)">
+      <Parameter Name="KorisnikId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SELECTAllBlogPages" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="SELECTAllBlogRecentComments" ReturnType="Collection(MainDatabaseModel.SELECTAllBlogRecentComments_Result)" />
+    <FunctionImport Name="SELECTAllGalleryImage" ReturnType="Collection(MainDatabaseModel.SELECTAllGalleryImage_Result)" />
+    <FunctionImport Name="SELECTAllNaslovnicaDataListItem" ReturnType="Collection(MainDatabaseModel.SELECTAllNaslovnicaDataListItem_Result)" />
+    <FunctionImport Name="SELECTAllNaslovnicaSliderListItem" ReturnType="Collection(MainDatabaseModel.SELECTAllNaslovnicaSliderListItem_Result)" />
+    <FunctionImport Name="SELECTDistinctAllGalleryPages" ReturnType="Collection(String)" />
+  </EntityContainer>
+  <ComplexType Name="SEARCHKorisnik_Result">
+    <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+    <Property Type="String" Name="KorisnikIme" Nullable="true" />
+    <Property Type="String" Name="KorisnikPrezime" Nullable="true" />
+    <Property Type="DateTime" Name="KorisnikRegistracija" Nullable="true" Precision="23" />
+    <Property Type="String" Name="KorisnikSlika" Nullable="true" />
+    <Property Type="String" Name="KorisnikPassword" Nullable="true" />
+    <Property Type="String" Name="KorisnikUsername" Nullable="true" />
+    <Property Type="String" Name="KorisnikPasswordSalt" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllBlogComment_Result">
+    <Property Type="Int32" Name="CommentId" Nullable="false" />
+    <Property Type="Int32" Name="CommentIdBlog" Nullable="false" />
+    <Property Type="String" Name="CommentText" Nullable="false" />
+    <Property Type="DateTime" Name="CommentDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="KorisnikId" Nullable="true" />
+    <Property Type="String" Name="KorisnikIme" Nullable="true" />
+    <Property Type="String" Name="KorisnikPrezime" Nullable="true" />
+    <Property Type="String" Name="KorisnikSlika" Nullable="true" />
+    <Property Type="DateTime" Name="KorisnikRegistracija" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllBlogDetails_Result">
+    <Property Type="Int32" Name="BlogId" Nullable="false" />
+    <Property Type="String" Name="BlogImageUrl" Nullable="true" />
+    <Property Type="String" Name="BlogNaslovnica" Nullable="true" />
+    <Property Type="String" Name="BlogTextSample" Nullable="true" />
+    <Property Type="String" Name="BlogText" Nullable="true" />
+    <Property Type="String" Name="BlogActionLink" Nullable="true" />
+    <Property Type="Int32" Name="BlogLikes" Nullable="true" />
+    <Property Type="Int32" Name="CommentId" Nullable="true" />
+    <Property Type="Int32" Name="KorisnikId" Nullable="true" />
+    <Property Type="Int32" Name="BlogPage" Nullable="true" />
+    <Property Type="DateTime" Name="BlogItemDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllBlogItem_Result">
+    <Property Type="Int32" Name="BlogId" Nullable="false" />
+    <Property Type="String" Name="BlogImageUrl" Nullable="true" />
+    <Property Type="String" Name="BlogNaslovnica" Nullable="true" />
+    <Property Type="String" Name="BlogTextSample" Nullable="true" />
+    <Property Type="String" Name="BlogText" Nullable="true" />
+    <Property Type="String" Name="BlogActionLink" Nullable="true" />
+    <Property Type="Int32" Name="BlogLikes" Nullable="true" />
+    <Property Type="Int32" Name="CommentId" Nullable="true" />
+    <Property Type="Int32" Name="KorisnikId" Nullable="true" />
+    <Property Type="Int32" Name="BlogPage" Nullable="true" />
+    <Property Type="DateTime" Name="BlogItemDate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllBlogKorisnik_Result">
+    <Property Type="Int32" Name="KorisnikId" Nullable="false" />
+    <Property Type="String" Name="KorisnikIme" Nullable="true" />
+    <Property Type="String" Name="KorisnikPrezime" Nullable="true" />
+    <Property Type="DateTime" Name="KorisnikRegistracija" Nullable="true" Precision="23" />
+    <Property Type="String" Name="KorisnikSlika" Nullable="true" />
+    <Property Type="String" Name="KorisnikPassword" Nullable="true" />
+    <Property Type="String" Name="KorisnikUsername" Nullable="true" />
+    <Property Type="String" Name="KorisnikPasswordSalt" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllBlogRecentComments_Result">
+    <Property Type="Int32" Name="CommentId" Nullable="false" />
+    <Property Type="Int32" Name="CommentIdBlog" Nullable="false" />
+    <Property Type="String" Name="CommentText" Nullable="false" />
+    <Property Type="DateTime" Name="CommentDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="KorisnikId" Nullable="true" />
+    <Property Type="String" Name="KorisnikIme" Nullable="true" />
+    <Property Type="String" Name="KorisnikPrezime" Nullable="true" />
+    <Property Type="String" Name="KorisnikSlika" Nullable="true" />
+    <Property Type="DateTime" Name="KorisnikRegistracija" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllGalleryImage_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="PictureSrc" Nullable="true" />
+    <Property Type="String" Name="PicturePage" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemNaslov" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemText" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemActionLink" Nullable="true" />
+    <Property Type="String" Name="SliderListItemActive" Nullable="true" />
+    <Property Type="String" Name="ItemHTMLplace" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllNaslovnicaDataListItem_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="PictureSrc" Nullable="true" />
+    <Property Type="String" Name="PicturePage" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemNaslov" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemText" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemActionLink" Nullable="true" />
+    <Property Type="String" Name="SliderListItemActive" Nullable="true" />
+    <Property Type="String" Name="ItemHTMLplace" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SELECTAllNaslovnicaSliderListItem_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="PictureSrc" Nullable="true" />
+    <Property Type="String" Name="PicturePage" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemNaslov" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemText" Nullable="true" />
+    <Property Type="String" Name="NaslovnicaItemActionLink" Nullable="true" />
+    <Property Type="String" Name="SliderListItemActive" Nullable="true" />
+    <Property Type="String" Name="ItemHTMLplace" Nullable="true" />
+  </ComplexType>
+</Schema>

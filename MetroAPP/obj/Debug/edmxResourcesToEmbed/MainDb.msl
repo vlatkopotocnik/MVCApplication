@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MainDatabaseModelStoreContainer" CdmEntityContainer="MainDatabaseEntities">
+    <EntitySetMapping Name="BlogComment">
+      <EntityTypeMapping TypeName="MainDatabaseModel.BlogComment">
+        <MappingFragment StoreEntitySet="BlogComment">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CommentIdBlog" ColumnName="CommentIdBlog" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogItem">
+      <EntityTypeMapping TypeName="MainDatabaseModel.BlogItem">
+        <MappingFragment StoreEntitySet="BlogItem">
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="BlogImageUrl" ColumnName="BlogImageUrl" />
+          <ScalarProperty Name="BlogNaslovnica" ColumnName="BlogNaslovnica" />
+          <ScalarProperty Name="BlogTextSample" ColumnName="BlogTextSample" />
+          <ScalarProperty Name="BlogText" ColumnName="BlogText" />
+          <ScalarProperty Name="BlogActionLink" ColumnName="BlogActionLink" />
+          <ScalarProperty Name="BlogLikes" ColumnName="BlogLikes" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="BlogPage" ColumnName="BlogPage" />
+          <ScalarProperty Name="BlogItemDate" ColumnName="BlogItemDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GalleryAndSliderAndNaslovnica">
+      <EntityTypeMapping TypeName="MainDatabaseModel.GalleryAndSliderAndNaslovnica">
+        <MappingFragment StoreEntitySet="GalleryAndSliderAndNaslovnica">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PictureSrc" ColumnName="PictureSrc" />
+          <ScalarProperty Name="PicturePage" ColumnName="PicturePage" />
+          <ScalarProperty Name="NaslovnicaItemNaslov" ColumnName="NaslovnicaItemNaslov" />
+          <ScalarProperty Name="NaslovnicaItemText" ColumnName="NaslovnicaItemText" />
+          <ScalarProperty Name="NaslovnicaItemActionLink" ColumnName="NaslovnicaItemActionLink" />
+          <ScalarProperty Name="SliderListItemActive" ColumnName="SliderListItemActive" />
+          <ScalarProperty Name="ItemHTMLplace" ColumnName="ItemHTMLplace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Korisnik">
+      <EntityTypeMapping TypeName="MainDatabaseModel.Korisnik">
+        <MappingFragment StoreEntitySet="Korisnik">
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="KorisnikIme" ColumnName="KorisnikIme" />
+          <ScalarProperty Name="KorisnikPrezime" ColumnName="KorisnikPrezime" />
+          <ScalarProperty Name="KorisnikRegistracija" ColumnName="KorisnikRegistracija" />
+          <ScalarProperty Name="KorisnikSlika" ColumnName="KorisnikSlika" />
+          <ScalarProperty Name="KorisnikPassword" ColumnName="KorisnikPassword" />
+          <ScalarProperty Name="KorisnikUsername" ColumnName="KorisnikUsername" />
+          <ScalarProperty Name="KorisnikPasswordSalt" ColumnName="KorisnikPasswordSalt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="INSERTBlogComment" FunctionName="MainDatabaseModel.Store.INSERTBlogComment" />
+    <FunctionImportMapping FunctionImportName="SEARCHKorisnik" FunctionName="MainDatabaseModel.Store.SEARCHKorisnik">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SEARCHKorisnik_Result">
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="KorisnikIme" ColumnName="KorisnikIme" />
+          <ScalarProperty Name="KorisnikPrezime" ColumnName="KorisnikPrezime" />
+          <ScalarProperty Name="KorisnikRegistracija" ColumnName="KorisnikRegistracija" />
+          <ScalarProperty Name="KorisnikSlika" ColumnName="KorisnikSlika" />
+          <ScalarProperty Name="KorisnikPassword" ColumnName="KorisnikPassword" />
+          <ScalarProperty Name="KorisnikUsername" ColumnName="KorisnikUsername" />
+          <ScalarProperty Name="KorisnikPasswordSalt" ColumnName="KorisnikPasswordSalt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllBlogComment" FunctionName="MainDatabaseModel.Store.SELECTAllBlogComment">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllBlogComment_Result">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CommentIdBlog" ColumnName="CommentIdBlog" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="KorisnikIme" ColumnName="KorisnikIme" />
+          <ScalarProperty Name="KorisnikPrezime" ColumnName="KorisnikPrezime" />
+          <ScalarProperty Name="KorisnikSlika" ColumnName="KorisnikSlika" />
+          <ScalarProperty Name="KorisnikRegistracija" ColumnName="KorisnikRegistracija" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllBlogDetails" FunctionName="MainDatabaseModel.Store.SELECTAllBlogDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllBlogDetails_Result">
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="BlogImageUrl" ColumnName="BlogImageUrl" />
+          <ScalarProperty Name="BlogNaslovnica" ColumnName="BlogNaslovnica" />
+          <ScalarProperty Name="BlogTextSample" ColumnName="BlogTextSample" />
+          <ScalarProperty Name="BlogText" ColumnName="BlogText" />
+          <ScalarProperty Name="BlogActionLink" ColumnName="BlogActionLink" />
+          <ScalarProperty Name="BlogLikes" ColumnName="BlogLikes" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="BlogPage" ColumnName="BlogPage" />
+          <ScalarProperty Name="BlogItemDate" ColumnName="BlogItemDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllBlogItem" FunctionName="MainDatabaseModel.Store.SELECTAllBlogItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllBlogItem_Result">
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="BlogImageUrl" ColumnName="BlogImageUrl" />
+          <ScalarProperty Name="BlogNaslovnica" ColumnName="BlogNaslovnica" />
+          <ScalarProperty Name="BlogTextSample" ColumnName="BlogTextSample" />
+          <ScalarProperty Name="BlogText" ColumnName="BlogText" />
+          <ScalarProperty Name="BlogActionLink" ColumnName="BlogActionLink" />
+          <ScalarProperty Name="BlogLikes" ColumnName="BlogLikes" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="BlogPage" ColumnName="BlogPage" />
+          <ScalarProperty Name="BlogItemDate" ColumnName="BlogItemDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllBlogKorisnik" FunctionName="MainDatabaseModel.Store.SELECTAllBlogKorisnik">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllBlogKorisnik_Result">
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="KorisnikIme" ColumnName="KorisnikIme" />
+          <ScalarProperty Name="KorisnikPrezime" ColumnName="KorisnikPrezime" />
+          <ScalarProperty Name="KorisnikRegistracija" ColumnName="KorisnikRegistracija" />
+          <ScalarProperty Name="KorisnikSlika" ColumnName="KorisnikSlika" />
+          <ScalarProperty Name="KorisnikPassword" ColumnName="KorisnikPassword" />
+          <ScalarProperty Name="KorisnikUsername" ColumnName="KorisnikUsername" />
+          <ScalarProperty Name="KorisnikPasswordSalt" ColumnName="KorisnikPasswordSalt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllBlogPages" FunctionName="MainDatabaseModel.Store.SELECTAllBlogPages" />
+    <FunctionImportMapping FunctionImportName="SELECTAllBlogRecentComments" FunctionName="MainDatabaseModel.Store.SELECTAllBlogRecentComments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllBlogRecentComments_Result">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="CommentIdBlog" ColumnName="CommentIdBlog" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+          <ScalarProperty Name="KorisnikIme" ColumnName="KorisnikIme" />
+          <ScalarProperty Name="KorisnikPrezime" ColumnName="KorisnikPrezime" />
+          <ScalarProperty Name="KorisnikSlika" ColumnName="KorisnikSlika" />
+          <ScalarProperty Name="KorisnikRegistracija" ColumnName="KorisnikRegistracija" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllGalleryImage" FunctionName="MainDatabaseModel.Store.SELECTAllGalleryImage">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllGalleryImage_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PictureSrc" ColumnName="PictureSrc" />
+          <ScalarProperty Name="PicturePage" ColumnName="PicturePage" />
+          <ScalarProperty Name="NaslovnicaItemNaslov" ColumnName="NaslovnicaItemNaslov" />
+          <ScalarProperty Name="NaslovnicaItemText" ColumnName="NaslovnicaItemText" />
+          <ScalarProperty Name="NaslovnicaItemActionLink" ColumnName="NaslovnicaItemActionLink" />
+          <ScalarProperty Name="SliderListItemActive" ColumnName="SliderListItemActive" />
+          <ScalarProperty Name="ItemHTMLplace" ColumnName="ItemHTMLplace" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllNaslovnicaDataListItem" FunctionName="MainDatabaseModel.Store.SELECTAllNaslovnicaDataListItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllNaslovnicaDataListItem_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PictureSrc" ColumnName="PictureSrc" />
+          <ScalarProperty Name="PicturePage" ColumnName="PicturePage" />
+          <ScalarProperty Name="NaslovnicaItemNaslov" ColumnName="NaslovnicaItemNaslov" />
+          <ScalarProperty Name="NaslovnicaItemText" ColumnName="NaslovnicaItemText" />
+          <ScalarProperty Name="NaslovnicaItemActionLink" ColumnName="NaslovnicaItemActionLink" />
+          <ScalarProperty Name="SliderListItemActive" ColumnName="SliderListItemActive" />
+          <ScalarProperty Name="ItemHTMLplace" ColumnName="ItemHTMLplace" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTAllNaslovnicaSliderListItem" FunctionName="MainDatabaseModel.Store.SELECTAllNaslovnicaSliderListItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MainDatabaseModel.SELECTAllNaslovnicaSliderListItem_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PictureSrc" ColumnName="PictureSrc" />
+          <ScalarProperty Name="PicturePage" ColumnName="PicturePage" />
+          <ScalarProperty Name="NaslovnicaItemNaslov" ColumnName="NaslovnicaItemNaslov" />
+          <ScalarProperty Name="NaslovnicaItemText" ColumnName="NaslovnicaItemText" />
+          <ScalarProperty Name="NaslovnicaItemActionLink" ColumnName="NaslovnicaItemActionLink" />
+          <ScalarProperty Name="SliderListItemActive" ColumnName="SliderListItemActive" />
+          <ScalarProperty Name="ItemHTMLplace" ColumnName="ItemHTMLplace" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SELECTDistinctAllGalleryPages" FunctionName="MainDatabaseModel.Store.SELECTDistinctAllGalleryPages" />
+  </EntityContainerMapping>
+</Mapping>

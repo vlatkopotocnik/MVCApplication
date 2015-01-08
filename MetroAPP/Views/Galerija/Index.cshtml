@@ -1,0 +1,87 @@
+﻿@model MetroAPP.Models.Galerija.GalleryPictureItemsAndPage
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@if ((string)Session["User"] == "ADMIN")
+{
+    <div class="text-primary" style="padding-left: 100px;">
+        <h1 style="color: #000000">GALLERY</h1>
+        <h2 style="padding-top: 20px;">ADD ITEM</h2>
+        <section>
+            <div style="width: 40%;">
+                @using (Html.BeginForm("AddItem", "Galerija", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div>
+                        <div>
+                            <label>Picture page </label>
+                            @Html.TextBox("picturePage", "", new { @class = "form-control", style = "border-color: #000000" })
+                        </div>
+                    
+                        <div>
+                            <label>Picture</label>
+                            <input type="file" id="File" name="File" />
+                        </div>
+                        <div style="padding-bottom: 50px;">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" value="Upload">ADD</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+    <table style="margin-left: 100px;">
+            <thead>
+                <tr>
+                    <th>PICTURE ID</th>
+                    <th style="padding-left: 50px;">PICTURE PAGE</th>
+                    <th style="padding-left: 150px;">PICTURE SOURCE</th>
+                </tr>
+            </thead>
+            @foreach (var item in @Model.GpItems)
+            {   
+                <tr>
+                    <td>@item.PictureId</td>
+                    <td style="padding-left: 50px;">@item.PicturePage</td>
+                    <td style ="padding-left: 50px;">@item.PictureSrc</td>
+                    <td style ="padding-left: 50px;"><span class=" btn btn-primary">@Html.ActionLink("Remove", "RemoveItem", "Galerija", new { pictureId = @item.PictureId , pictureSrc = @item.PictureSrc}, null)</span></td>
+                </tr>
+            }
+        </table>
+}
+else { 
+<section id="portfolio">
+    <div class="container">
+        <div class="text-primary">
+            <h2>Gallery</h2>
+            <p class="lead">See our gallery of photos</p>
+        </div>
+        <div class="center">
+            <ul class="portfolio-filter text-center">
+                <li><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+                @foreach (var item in Model.Pages)
+                {
+                    <li><a class="btn btn-default" href="#" data-filter=".@item">@item</a></li>
+                }
+            </ul><!--/#portfolio-filter-->
+        </div>
+        <div class="row">
+            <div class="portfolio-items">
+                @foreach (var item in Model.GpItems)
+                {
+                    <div class="portfolio-item @item.PicturePage col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="~/Images/Gallery/@item.PictureSrc" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <a class="preview" href="~/Images/Gallery/@item.PictureSrc" rel="prettyPhoto"><img src="~/Images/Gallery/magnifying-glass.png" alt="Zoom" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/.portfolio-item-->
+                }
+            </div>    
+        </div>
+    </div>
+</section>
+}

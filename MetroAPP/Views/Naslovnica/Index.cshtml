@@ -1,0 +1,199 @@
+﻿@model MetroAPP.Models.Naslovnica.NaslovnicaDataListAndSliderItemList
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@if ((string)Session["User"] == "ADMIN")
+{   
+    <div>
+        <h1 style="color: #000000">HOME PAGE</h1>
+        <h1 style="color: #000000">DATALIST</h1>
+        <div class="text-primary" style="padding-left: 100px;">
+            <h2 style="padding-top: 20px;">ADD ITEM</h2>
+            <section>
+                <div style="width: 40%;">
+                    @using (Html.BeginForm("AddItemNaslovnica", "Naslovnica", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div>
+                            @Html.TextBox("directory", "Headphones", new { style="opacity: 0;" })
+                            @Html.TextBox("itemHtmLplace", "Naslovnica", new { style = "opacity: 0;" })
+                            <div>
+                                <label>ACTION LINK (MUST BE A LINK TO ONE OF THE PAGES ON WEBSITE) </label>
+                                @Html.TextBox("actionLink", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+                            <div>
+                                <label>PICTURE TITLE </label>
+                                @Html.TextBox("pictureTitle", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+                            <div>
+                                <label>PICTURE TEXT </label>
+                                @Html.TextBox("pictureText", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+
+                            <div>
+                                <label>Picture</label>
+                                <input type="file" id="File" name="File" />
+                            </div>
+                            <div style="padding-bottom: 50px;">
+                                <button type="submit" name="submit" class="btn btn-primary btn-lg" value="Upload">ADD</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+        <table style="margin-left: 10px;">
+            <thead>
+                <tr>
+                    <th>PICTURE ID</th>
+                    <th style="padding-left: 10px;">PICTURE SOURCE</th>
+                    <th style="padding-left: 10px;">ACTION LINK</th>
+                    <th style="padding-left: 10px;">PICTURE TITLE</th>
+                    <th style="padding-left: 10px;">PICTURE TEXT</th>
+                </tr>
+            </thead>
+            @foreach (var item in @Model.NaslovnicaDataListItems)
+            {
+                <tr>
+                    <td>@item.DataListId</td>
+                    <td style="padding-left: 10px;">@item.DataListItemImgSrc</td>
+                    <td style="padding-left: 10px;">@item.DataListActionLink</td>
+                    <td style="padding-left: 10px;">@item.DataListItemNaslov</td>
+                    <td style="padding-left: 10px;">@item.DataListItemText</td>
+                    <td style="padding-left: 10px;"><span class=" btn btn-primary">@Html.ActionLink("Remove", "RemoveItemNaslovnica", "Naslovnica", new { pictureId = @item.DataListId, pictureSrc = @item.DataListItemImgSrc, directory = "Headphones" }, null)</span></td>
+                </tr>
+            }
+        </table>
+    </div>
+    
+    
+    
+    <div style="padding-top: 100px;">
+        <h1 style="color: #000000">SLIDER</h1>
+        <div class="text-primary" style="padding-left: 100px;">
+            <h2 style="padding-top: 20px;">ADD ITEM</h2>
+            <section>
+                <div style="width: 40%;">
+                    @using (Html.BeginForm("AddItemNaslovnica", "Naslovnica", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div>
+                            @Html.TextBox("directory", "Slider", new { style = "opacity: 0;" })
+                            @Html.TextBox("itemHtmLplace", "Slider", new { style = "opacity: 0;" })
+                            <div>
+                                <label>ACTION LINK (MUST BE A LINK TO ONE OF THE PAGES ON WEBSITE) </label>
+                                @Html.TextBox("actionLink", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+                            <div>
+                                <label>PICTURE TITLE </label>
+                                @Html.TextBox("pictureTitle", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+                            <div>
+                                <label>PICTURE TEXT </label>
+                                @Html.TextBox("pictureText", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+
+                            <div>
+                                <label>PICTURE "item/item active" (ONLY ONE PICTURE CAN BE "ITEM ACTIVE") </label>
+                                @Html.TextBox("itemActive", "", new { @class = "form-control", style = "border-color: #000000" })
+                            </div>
+
+                            <div>
+                                <label>Picture</label>
+                                <input type="file" id="File" name="File" />
+                            </div>
+                            <div style="padding-bottom: 50px;">
+                                <button type="submit" name="submit" class="btn btn-primary btn-lg" value="Upload">ADD</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+        <table style="margin-left: 10px;">
+            <thead>
+                <tr>
+                    <th>PICTURE ID</th>
+                    <th style="padding-left: 10px;">PICTURE SOURCE</th>
+                    <th style="padding-left: 10px;">ACTION LINK</th>
+                    <th style="padding-left: 10px;">PICTURE TITLE</th>
+                    <th style="padding-left: 10px;">PICTURE TEXT</th>
+                    <th style="padding-left: 10px;">PICTURE ITEM/ITEM ACTIVE</th>
+                </tr>
+            </thead>
+            @foreach (var item in @Model.NaslovnicaSliderItems)
+            {
+                <tr>
+                    <td>@item.SliderListItemId</td>
+                    <td style="padding-left: 10px;">@item.SliderListItemImgUrl</td>
+                    <td style="padding-left: 10px;">@item.SliderListItemActionLink</td>
+                    <td style="padding-left: 10px;">@item.SliderLitsItemNaslov</td>
+                    <td style="padding-left: 10px;">@item.SliderListItemText</td>
+                    <td style="padding-left: 10px;">@item.SliderListItemActive</td>
+                    <td style="padding-left: 10px;"><span class=" btn btn-primary">@Html.ActionLink("Remove", "RemoveItemNaslovnica", "Naslovnica", new { pictureId = @item.SliderListItemId, pictureSrc = @item.SliderListItemImgUrl, directory = "Slider" }, null)</span></td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+        
+            <div class="carousel-inner" style="height: 400px">
+                @foreach (var item in Model.NaslovnicaSliderItems)
+                {
+                    <div class="@item.SliderListItemActive" style="background-image: url(@item.SliderListItemImgUrl)">
+                        <div class="container">
+                            <div class="row slide-margin">
+                                <div class="col-sm-6">
+                                    <div class="carousel-content" style="margin-top: -80px">
+                                        <h1 class="animation animated-item-1" style="color: black">@item.SliderLitsItemNaslov</h1>
+                                        <h2 class="animation animated-item-2" style="color: black">@item.SliderListItemText</h2>
+                                        <h2 class="btn-primary" style="width: 25%"> @Html.ActionLink("BUY NOW", "Index", @item.SliderListItemActionLink) </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.item-->
+                }       
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <img src="~/Images/Naslovnica/Slider/left.png" />
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <img src="~/Images/Naslovnica/Slider/right.png" />
+        </a>
+    </section>
+    <!--/#main-slider-->
+
+    <section id="recent-works">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2 style="padding-top: 20px;">Latest products</h2>
+                <p class="lead">Audio-Technica creates high performance microphones, headphones, wireless systems, mixers, and electronic products for home and professional use</p>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.NaslovnicaDataListItems)
+                {
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="~/Images/Naslovnica/Headphones/@item.DataListItemImgSrc" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a>@item.DataListItemNaslov</a></h3>
+                                    <p>@item.DataListItemText</p>
+                                    @Html.ActionLink("VIEW MORE", "Index", @item.DataListActionLink)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section>
+    <!--/#recent-works-->
+}

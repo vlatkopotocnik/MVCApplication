@@ -1,0 +1,126 @@
+﻿@using System.Globalization
+@model MetroAPP.Models.Proizvodi.ProizvodiAndPageAndCategory
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@if ((string) Session["User"] == "ADMIN")
+{
+    <div class="text-primary" style="padding-left: 100px;">
+        <h1 style="color: #000000">PRODUCTS</h1>
+        <h2 style="padding-top: 20px;">ADD ITEM</h2>
+        <section>
+            <div style="width: 40%;">
+                @using (Html.BeginForm("HellsBellsAdd", "Proizvodi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div>
+                        <div>
+                            <label>Name </label>
+                            @Html.TextBox("proizvodNaziv", "", new { @class = "form-control", style = "border-color: #000000" })
+                            <label>Price </label>
+                            @Html.TextBox("proizvodCijena", "", new { @class = "form-control", style = "border-color: #000000" })
+                            <label>Page (1,2,3...)</label>
+                            @Html.TextBox("proizvodPage", "", new { @class = "form-control", style = "border-color: #000000" })
+                            <label>Category </label>
+                            @Html.TextBox("proizvodKategorija", "", new { @class = "form-control", style = "border-color: #000000" })
+                            <label>Description </label>
+                            @Html.TextArea("proizvodOpis", "", new { @class = "form-control", style = "border-color: #000000; columns: 5" })
+                        </div>
+
+                        <div>
+                            <label>Picture</label>
+                            <input type="file" id="File" name="File" />
+                        </div>
+                        <div style="padding-bottom: 50px;">
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" value="Upload">ADD</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+<table style="margin-left: 50px; margin-bottom: 50px;">
+    <thead>
+        <tr>
+            <th>PRODUCT ID</th>
+            <th style="padding-left: 10px;">IMAGE</th>
+            <th style="padding-left: 10px;">NAME</th>
+            <th style="padding-left: 10px;">PRICE</th>
+            <th style="padding-left: 10px;">PAGE</th>
+            <th style="padding-left: 10px;">CATEGORY</th>
+            <th style="padding-left: 10px;">DESCRIPTION</th>
+        </tr>
+    </thead>
+    @foreach (var item in @Model.ListProizvodi)
+    {
+        <tr>
+            <td>@item.ProizvodId</td>
+            <td style="padding-left: 10px;">@item.ProizvodImgSrc</td>
+            <td style="padding-left: 10px;">@item.ProizvodNaziv</td>
+            <td style="padding-left: 10px;">@item.ProizvodCijena</td>
+            <td style="padding-left: 10px;">@item.ProizvodPage</td>
+            <td style="padding-left: 10px;">@item.ProizvodCategory</td>
+            <td style="padding-left: 10px;">@item.ProizvodOpis</td>
+            <td style="padding-left: 10px;"><span class=" btn btn-primary">@Html.ActionLink("Remove", "HellsBellsRemove", "Proizvodi", new { proizvodId = @item.ProizvodId, proizvodImgSrc = @item.ProizvodImgSrc, proizvodCategory = @item.ProizvodCategory }, null)</span></td>
+        </tr>
+    }
+</table>
+}
+else
+{
+    <section>
+        <div class="container" style="padding-bottom: 100px;">
+            <div class="text-primary" style="padding-left: 100px;">
+                <div style="width: 50%; float: left">
+                    <h2 style="padding-top: 20px;">Products</h2>
+                    <p class="lead">All products from us</p>
+                </div>
+                <div style="width: 50%; float: right">
+                    <div style="float: right; padding-top: 50px; padding-bottom: 50px;">
+                        @using (Html.BeginForm("Index", "Proizvodi", FormMethod.Post))
+                        {
+                            <div style="float: left; width: 300px;">@Html.TextBox("search", "", new {@class = "form-control search_box", @autocomplete = "off", @placeholder = "Search Here", style = "border-color: #000000;"})</div>
+                            <br/>
+                            <span class="btn btn-primary">@Html.ActionLink("(" + @Session["itemNumber"] + ")" + " items in cart", "CartDetails", "Proizvodi")<img src="~/Images/Products/shopping_cart_racing.png" style="padding-left: 10px;"/></span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="text-primary" style="padding-left: 100px; padding-bottom: 100px;">
+
+            </div>
+            
+            <div class="pricing-area text-center" style="margin-top: 100px;">
+                <div class="row">
+                    @foreach (var item in @Model.ListProizvodi)
+                    {
+                        <div class="col-sm-4 plan price-one wow fadeInDown">
+                            <ul>
+                                <li class="heading-one" style="background-color: #ffffff">
+                                    <h1><img src="~/Images/Products/@item.ProizvodImgSrc" style="width: 100%" alt="IMAGE"/></h1>
+                                </li>
+                                <li>Product code: @item.ProizvodId</li>
+                                <li>Product name: @item.ProizvodNaziv</li>
+                                <li>Product description: @item.ProizvodOpis</li>
+                                <li>Product price: @item.ProizvodCijena.ToString("C")</li>
+                                <li class="plan-action">
+                                    <span class="btn btn-primary">@Html.ActionLink("Add to cart", "AddToCart", "Proizvodi", new {ProizvodId = @item.ProizvodId, ProizvodImgSrc = @item.ProizvodImgSrc, ProizvodNaziv = @item.ProizvodNaziv, ProizvodCijena = @item.ProizvodCijena}, null)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div><!--/pricing-area-->
+        </div><!--/container-->
+        <div class="collapse navbar-collapse navbar-inverse">
+            <p style="float: left; color: #FFFFFF">Page: </p>
+            <ul class="nav navbar-nav">
+                @foreach (var item in @Model.Pages)
+                {
+                    <li>@Html.ActionLink(@item.ToString(CultureInfo.InvariantCulture), "Index", "Proizvodi", new {page = @item}, null) </li>
+                }
+            </ul>
+        </div> <!--/.pagination-->
+    </section>
+    <!--/pricing-page-->
+}

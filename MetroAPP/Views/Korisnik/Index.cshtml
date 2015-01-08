@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MetroAPP.Models.Korisnik.Korisnik>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="text-primary" style="padding-left: 100px;">
+    <h1 style="color: #000000">USERS</h1>
+    <h2 style="padding-top: 20px;">ADD ITEM</h2>
+    <section>
+        <div style="width: 40%;">
+            @using (Html.BeginForm("AddItem", "Korisnik", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div>
+                    <div>
+                        <label>Name </label>
+                        @Html.TextBox("korisnikIme", "", new { @class = "form-control", style = "border-color: #000000" })
+                        <label>Surname </label>
+                        @Html.TextBox("korisnikPrezime", "", new { @class = "form-control", style = "border-color: #000000" })
+                        <label>Username </label>
+                        @Html.TextBox("korisnikUsername", "", new { @class = "form-control", style = "border-color: #000000" })
+                        <label>Password </label>
+                        @Html.TextBox("korisnikPassword", "", new { @class = "form-control", style = "border-color: #000000" })
+                    </div>
+
+                    <div>
+                        <label>Picture</label>
+                        <input type="file" id="File" name="File" />
+                    </div>
+                    <div style="padding-bottom: 50px;">
+                        <button type="submit" name="submit" class="btn btn-primary btn-lg" value="Upload">ADD</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+<table style="margin-left: 100px; margin-bottom: 50px;">
+    <thead>
+        <tr>
+            <th>USER ID</th>
+            <th style="padding-left: 10px;">NAME</th>
+            <th style="padding-left: 10px;">SURNAME</th>
+            <th style="padding-left: 10px;">USERNAME</th>
+            <th style="padding-left: 10px;">PASSWORD</th>
+            <th style="padding-left: 10px;">PASSWORD SALT</th>
+            <th style="padding-left: 10px;">REGISTRATION</th>
+            <th style="padding-left: 10px;">PICTURE</th>
+        </tr>
+    </thead>
+    @foreach (var item in @Model)
+    {
+        <tr>
+            <td>@item.KorisnikId</td>
+            <td style="padding-left: 10px;">@item.KorisnikIme</td>
+            <td style="padding-left: 10px;">@item.KorisnikPrezime</td>
+            <td style="padding-left: 10px;">@item.KorisnikUsername</td>
+            <td style="padding-left: 10px;">@item.KorisnikPassword</td>
+            <td style="padding-left: 10px;">@item.KorisnikPasswordSalt</td>
+            <td style="padding-left: 10px;">@item.KorisnikRegistracija</td>
+            <td style="padding-left: 10px;">@item.KorisnikSlika</td>
+            <td style="padding-left: 10px;"><span class=" btn btn-primary">@Html.ActionLink("Remove", "RemoveItem", "Korisnik", new { korisnikId = @item.KorisnikId , korisnikSlika = @item.KorisnikSlika}, null)</span></td>
+        </tr>
+    }
+</table>
+

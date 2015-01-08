@@ -1,0 +1,12 @@
+﻿@model string
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    ViewBag.Title = "Message posted";
+}
+
+<h2 class="text-center" style="padding-top:300px;padding-bottom: 50px;">Your message was posted successfully. Thanks.</h2>
+<div style="padding-bottom: 250px;">
+    <div style="background-color: #000000; width: 102px; border-radius: 10px; padding: 10px;" class="center-block">
+        <p style="padding-left: 13px;padding-top: 5px;">@Html.ActionLink("RETURN", "Index", "BlogItemDetails", new { blogId = Int32.Parse(@Model) }, null)</p>
+    </div>
+</div>

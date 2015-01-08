@@ -1,0 +1,120 @@
+﻿@model MetroAPP.Models.Blog.BlogItemAndKorisnikAndComments
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<section id="blog" class="container">
+    <div class="text-primary" style="padding-left: 100px;">
+        <h2 style="padding-top: 20px;">Blog</h2>
+        <p class="lead" style="padding-bottom: 20px;">Latest news from Audio - Tehghnica</p>
+    </div>
+    <div class="blog">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-item">
+                    @foreach (var item1 in @Model.ListBlogItemAndKorisnik)
+                    {
+                        <img class="img-responsive img-blog" src="~/Images/Blog/@item1.BlogItem.BlogImageUrl" width="100%" alt="" />
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-2 text-center">
+                                <div class="entry-meta">
+                                
+                                    <span id="publish_date">@item1.Korisnik.KorisnikRegistracija.Date.Day.@item1.Korisnik.KorisnikRegistracija.Date.Month.@item1.Korisnik.KorisnikRegistracija.Date.Year</span>
+                                    <span>Author:<br /><a href="#">@item1.Korisnik.KorisnikIme @item1.Korisnik.KorisnikPrezime</a></span>
+                                    <span>Likes: <a href="#">@item1.BlogItem.BlogLikes</a></span>
+                                
+                                </div>
+                            </div>
+
+                            @foreach (var item2 in @Model.ListBlogItemAndKorisnik)
+                            {
+                                <div class="col-xs-12 col-sm-10 blog-content">
+                                    <h2>@item2.BlogItem.BlogNaslovnica</h2>
+                                    <p style="padding-top: 50px;">@item2.BlogItem.BlogText</p>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div><!--/.blog-item-->
+               
+                <h1 id="comments_title">@Model.BlogNumberOfComments Comments</h1>
+                @foreach (var item in @Model.ListBlogAllComment)
+                {
+                    <div class="media comment_section">
+                        <div class="pull-left post_comments">
+                            @if (item.Korisnik.KorisnikId != 0)
+                            {
+                                <a href="#"><img src="~/Images/Korisnik/@item.Korisnik.KorisnikSlika" class="img-circle" alt="" /></a>
+                            }
+                        </div>
+                        <div class="media-body post_reply_comments">
+                            <h3>@item.Korisnik.KorisnikIme @item.Korisnik.KorisnikPrezime</h3>
+                            <h4>@item.BlogComment.CommentDate</h4>
+                            <p>@item.BlogComment.CommentText</p>
+                        </div>
+                    </div>
+                }
+                
+
+                <div id="contact-page clearfix">
+                    @if (Session["Korisnik"] != null)
+                    {
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <div class="message_heading">                       
+                            <h4>Leave a Replay</h4>
+                            <p>Make sure you enter the(*)required information where indicate.HTML code is not allowed</p>
+                        </div>
+                        <div class="row">
+                            @using (Html.BeginForm("MessagePost", "BlogItemDetails", FormMethod.Post))
+                            {
+                                <div class="col-sm-5" style="width: 100%">
+                                    <div class="form-group">
+                                        <label>Message *</label>
+                                        @Html.TextArea("message", new { rows = 10,@class = "form-control",style="border-color: #000000"})
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
+                                    </div>
+                                </div>
+                                @Html.TextBox("CommentIdBlog", @Model.ListBlogItemAndKorisnik[0].BlogItem.BlogId, new {@style = "opacity: 0"})
+                            }       
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="message_heading">                       
+                            <h4>Leave a Replay</h4>
+                            <div style="width: 230px;float: left">To leave a replay you must <p style="background-color: #000000; width: 45px;float: right">@Html.ActionLink("sign in","Index","LogInOut")</p></div>
+                        </div>
+                    }
+                </div><!--/#contact-page-->
+            </div><!--/.col-md-8-->
+            <aside class="col-md-4">
+                <div class="widget search">
+                    <form role="form">
+                        <input type="text" class="form-control search_box" autocomplete="off" placeholder="Search Here">
+                    </form>
+                </div><!--/.search-->
+
+                <div class="widget categories">
+                    <h3>Recent Comments</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @foreach (var item in @Model.ListBlogTop3Comment)
+                            {
+                                <div class="single_comments">
+                                    <span class="text-primary">By: @item.Korisnik.KorisnikIme @item.Korisnik.KorisnikPrezime </span><span style="padding-left: 30px;">  @item.BlogComment.CommentDate</span>
+                                    <p>@item.BlogComment.CommentText</p>
+                                    <div class="entry-meta small muted">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>   
+                 </div>         
+            </aside>
+        </div><!--/.row-->
+    </div><!--/.blog-->
+</section><!--/#blog-->
+

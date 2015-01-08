@@ -1,0 +1,63 @@
+﻿@model MetroAPP.Models.Proizvodi.CartAndTotalPrice
+@{
+    ViewBag.Title = "CartDetails";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+    <section class="pricing-page">
+    <div class="container" style="padding-bottom: 100px;">
+        <div class="text-primary" style="padding-left: 50px;">
+            <div style="padding-top: 150px;">
+                <div style="width: 60%; float: left; box-shadow: 10px 10px 5px #888888; border-color: #888888; border: solid; border-width: 1px;">
+                    <div style="padding: 20px;">
+                        @if ((int)Session["itemNumber"] == 0)
+                        {
+                            <h5>Your shopping cart is empty, but it doesn't have to be.</h5>
+                            <p>There are lots of great deals and one-of-a-kind items just waiting for you.</p>
+                            <p>Start shopping, and look for the "Add to cart" button. You can add several items to your cart from different sellers and pay for </p>
+                            <p>them all at once.</p>
+                            <div class="list-inline">
+                                <span class="btn btn-primary">@Html.ActionLink("START SHOPPING AND SEARCH FOR GREAT DEALS", "Index", "Proizvodi")</span>
+                                <br />
+                                <span class="btn btn-primary">@Html.ActionLink("GO BACK TO THE HOME PAGE", "Index", "Naslovnica")</span>
+                            </div>
+                        }
+                        else
+                        {
+                            
+                            <table>
+                                @foreach (var item in @Model.ListCart)
+                                {
+                                    <tr style="border-bottom: solid; border-bottom-color: #888888; border-width: 1px;">
+                                        <td>@item.ProizvodId.</td>
+                                        <td><img src="~/Images/Products/@item.ProizvodImgSrc" style="width: 160px"/></td>
+                                        <td style="padding-left: 50px;">@item.ProizvodNaziv</td>
+                                        <td style="padding-left: 50px;">@item.ProizvodCijena.ToString("C")</td>
+                                        <td style="padding-left: 10px;"><span class=" btn btn-primary">@Html.ActionLink("Remove", "RemoveItem", "Proizvodi", new {proizvodId = @item.ProizvodId},null)</span></td>                                                                        
+                                    </tr>
+                                }
+                            </table>                           
+                        }
+                    </div>
+                </div>
+                <div style="width: 30%; float: right">
+                    <div style="width: 100%; float: right; padding-bottom: 30px; box-shadow: 10px 10px 5px #888888; border-color: #888888; border: solid; border-width: 1px;">
+                        <div style="padding: 20px;">
+                            <h2>Cart summary</h2>
+                            <hr/>
+                            <h2>Total: @Model.TotalPrice.ToString("C")</h2>
+                            @if (Session["Korisnik"] != null)
+                            {
+                                // TO DO IDE NA CHECKOUT AKO JE KORISNIK LOGIRAN
+                                <span class="btn btn-primary">@Html.ActionLink("Proceed to checkout", "CartDetails", "Proizvodi")</span>
+                            }
+                            else
+                            {
+                                <span class="btn btn-primary">@Html.ActionLink("Proceed to checkout", "Index", "LogInOut")</span>
+                            }
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+    </section>

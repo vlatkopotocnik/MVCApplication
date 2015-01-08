@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    ViewBag.Title = "Mail sent";
+}
+
+<h2 class="text-center" style="padding-top:200px;padding-bottom: 50px;">You have subscribed yourself to ours newsletter. Thank you, and enjoy.</h2>
+@using (Html.BeginForm("Index", "Naslovnica", FormMethod.Post))
+{
+    <div style="padding-bottom: 300px;" class="center">
+        <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Return</button>
+    </div>
+}
